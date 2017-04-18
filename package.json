@@ -1,0 +1,22 @@
+{
+  "name": "tmp-electron",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/main.js",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "electron": "^1.6.5",
+    "react-scripts": "0.9.5"
+  },
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
+    "eject": "react-scripts eject"
+  }
+}
