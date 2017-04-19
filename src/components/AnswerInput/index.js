@@ -1,4 +1,10 @@
 import React, { Component } from 'react'
+import {
+  Form,
+  Div,
+  Label,
+  Input
+} from 'glamorous'
 
 class AnswerInput extends Component {
   constructor (props) {
@@ -9,12 +15,12 @@ class AnswerInput extends Component {
 
   render () {
     return (
-      <form>
-        <div className='form-group'>
-          <label htmlFor='answer'>Answer: </label>
-          <input type='text' className='meh' id='answer' />
-        </div>
-      </form>
+      <Form>
+        <Div className='form-group'>
+          <Label color='red' htmlFor='answer'>Answer: </Label>
+          <Input type='text' className='meh' id='answer' />
+        </Div>
+      </Form>
     )
   }
 }

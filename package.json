@@ -4,6 +4,9 @@
   "private": true,
   "main": "src/main.js",
   "dependencies": {
+    "glamor": "^2.20.24",
+    "glamorous": "^3.8.0",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
@@ -12,6 +15,7 @@
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^4.3.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",

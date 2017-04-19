@@ -1,5 +1,6 @@
 const electron = require('electron')
 const fs = require('fs')
+const { homedir } = require('os')
 
 // Module to control application life.
 const app = electron.app
@@ -26,7 +27,15 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadURL(startUrl)
 
-  if (process.env.ELECTRON_START_URL) mainWindow.webContents.openDevTools()
+  if (process.env.ELECTRON_START_URL) {
+    BrowserWindow.addDevToolsExtension(
+      path.resolve(
+        homedir(),
+        'Library/Application\ Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.0.12_0'
+      )
+    )
+    mainWindow.webContents.openDevTools()
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
