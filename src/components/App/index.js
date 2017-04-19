@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import AnswerInput from '../AnswerInput'
 import './App.css'
 
-const electron = window.require('electron');
+const electron = window.require('electron')
 const ipc = electron.ipcRenderer
 
 ipc.on('pkg-json', (event, arg) => {
@@ -9,24 +10,25 @@ ipc.on('pkg-json', (event, arg) => {
 })
 
 class App extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.fireMsg = this.fireMsg.bind(this)
   }
 
-  fireMsg() {
-    ipc.send('read-pkg-json', 'meh')
+  fireMsg () {
+    ipc.send('read-pkg-json')
   }
 
-  render() {
+  render () {
     return (
       <div>
         <button onClick={this.fireMsg}>Get package.json</button>
+        <div>hello</div>
+        <AnswerInput />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
