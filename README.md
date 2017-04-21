@@ -6,6 +6,23 @@ ideas:
 
 * clipboard managing app
 * drill app
+* timesheet
+
+- - -
+
+What to do to install dev tools in development:
+
+if (process.env.ELECTRON_START_URL) {
+  // require('devtron').install()
+  // const { homedir } = require('os')
+  // BrowserWindow.addDevToolsExtension(
+  //   path.resolve(
+  //     homedir(),
+  //     'Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.0.12_0'
+  //   )
+  // )
+  mainWindow.webContents.openDevTools()
+}
 
 - - -
 

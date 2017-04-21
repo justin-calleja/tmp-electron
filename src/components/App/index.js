@@ -4,9 +4,14 @@ import './App.css'
 
 const electron = window.require('electron')
 const ipc = electron.ipcRenderer
+const clipboard = electron.clipboard
 
 ipc.on('pkg-json', (event, arg) => {
   console.log('JSON is:', arg)
+})
+
+ipc.on('yank', (event, arg) => {
+  console.log(clipboard.readText())
 })
 
 class App extends Component {
@@ -18,6 +23,7 @@ class App extends Component {
 
   fireMsg () {
     ipc.send('read-pkg-json')
+    console.log('clipboard.readText: ', clipboard.readText())
   }
 
   render () {

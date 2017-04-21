@@ -1,9 +1,9 @@
 const electron = require('electron')
 const fs = require('fs')
-const { homedir } = require('os')
 
 // Module to control application life.
 const app = electron.app
+const globalShortcut = electron.globalShortcut
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 const ipc = electron.ipcMain
@@ -24,16 +24,10 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   })
-  // and load the index.html of the app.
   mainWindow.loadURL(startUrl)
 
+  // TODO: move elsewhere (not related to createWindow)
   if (process.env.ELECTRON_START_URL) {
-    BrowserWindow.addDevToolsExtension(
-      path.resolve(
-        homedir(),
-        'Library/Application\ Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.0.12_0'
-      )
-    )
     mainWindow.webContents.openDevTools()
   }
 
@@ -49,7 +43,12 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  globalShortcut.register('CommandOrControl+Y', () => {
+    mainWindow.webContents.send('yank')
+  })
+  createWindow()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
